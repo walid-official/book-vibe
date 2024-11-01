@@ -8,6 +8,7 @@ import Book from "../Books/Book";
 const BookList = () => {
   const bookList = useLoaderData();
   const [readList, setReadList] = useState([]);
+  const [sort, setSort] = useState('');
   const [wishList, setWishList] = useState([]);
 
   useEffect(() => {
@@ -21,6 +22,8 @@ const BookList = () => {
     setReadList(readBookList);
   }, []);
 
+
+
   useEffect(() => {
     const storedWishList = getStoredWishList();
     const storedWishListInt = storedWishList.map((id) => parseInt(id));
@@ -32,16 +35,38 @@ const BookList = () => {
     setWishList(wishBookList);
   }, []);
 
+
+  const handleSort = sortType => {
+    setSort(sortType);
+
+    if(sortType === 'Number of Pages'){
+        const sortedReadList = [...readList].sort((a,b) => a.totalPages - b.totalPages);
+        setReadList(sortedReadList);
+    }
+
+    if(sortType === 'Ratings'){
+        const sortedReadList = [...readList].sort((a,b) => a.rating - b.rating) 
+        setReadList(sortedReadList);
+    }
+
+  }
+
+
   return (
     <div className="w-11/12 mx-auto">
       <h2 className="font-bold text-3xl my-10 text-center">Books</h2>
       <details className="dropdown">
-        <summary className="btn m-1">Sort By</summary>
+
+        <summary className="btn m-1">
+          {
+            sort ? `Sort By : ${sort}` : 'Sort By'
+          } 
+        </summary>
         <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-          <li>
+          <li onClick={() => handleSort("Ratings")}>
             <a>Ratings</a>
           </li>
-          <li>
+          <li onClick={() => handleSort("Number of Pages")}>
             <a>Number of Page</a>
           </li>
         </ul>
