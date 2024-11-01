@@ -1,4 +1,5 @@
 import { FaBars } from "react-icons/fa6";
+import { NavLink } from "react-router-dom";
 const Navbar = () => {
   return (
     <div className="w-11/12 mx-auto py-4">
@@ -34,9 +35,9 @@ const Navbar = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            <li><a className="font-semibold">Home</a></li>
-            <li><a className="font-semibold">Listed Books</a></li>
-            <li><a className="font-semibold">Pages to Read</a></li>
+            <NavLink to="/"><li><a className="font-semibold">Home</a></li></NavLink>
+            <NavLink to="/BookList"><li><a className="font-semibold">Listed Books</a></li></NavLink>
+            <NavLink><li><a className="font-semibold">Pages to Read</a></li></NavLink>
           </ul>
         </div>
         <div className="navbar-end space-x-2">
