@@ -37,7 +37,7 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">
             <NavLink to="/"><li><a className="font-semibold">Home</a></li></NavLink>
             <NavLink to="/BookList"><li><a className="font-semibold">Listed Books</a></li></NavLink>
-            <NavLink><li><a className="font-semibold">Pages to Read</a></li></NavLink>
+            <NavLink to="/BookChart"><li><a className="font-semibold">Pages to Read</a></li></NavLink>
           </ul>
         </div>
         <div className="navbar-end space-x-2">

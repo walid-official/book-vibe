@@ -13,6 +13,7 @@ import ErrorPage from './components/ErrorPage/ErrorPage.jsx';
 import BookDetails from './components/Books/BookDetails.jsx';
 import Home from './components/Home/Home.jsx'
 import BookList from './components/BookList/BookList.jsx';
+import BookChart from './components/BookChart/BookChart.jsx';
 
 
 const router = createBrowserRouter([
@@ -28,12 +29,17 @@ const router = createBrowserRouter([
       {
         path: 'BookDetail/:BookId',
         element:<BookDetails></BookDetails>,
-        loader: () => fetch('BooksData.json')
+        loader: () => fetch('/BooksData.json')
       },
       {
         path: 'BookList',
         element: <BookList></BookList>,
-        loader: () => fetch('BooksData.json')
+        loader: () => fetch('/BooksData.json')
+      },
+      {
+        path: 'BookChart',
+        element: <BookChart></BookChart>,
+        loader: () => fetch('/BooksData.json')
       }
     ]
   },
